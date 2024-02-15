@@ -1,0 +1,13 @@
+# Dockerfile.rails
+FROM ruby:latest AS builder
+
+# Default directory
+ENV INSTALL_PATH /app
+RUN mkdir -p $INSTALL_PATH
+
+# Install rails
+RUN gem install rails bundler
+WORKDIR /app
+
+# Run a shell
+CMD ["/bin/sh"]
