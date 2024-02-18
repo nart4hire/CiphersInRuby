@@ -1,14 +1,14 @@
 <main>
   <h1>Ciphers In Ruby</h1>
 
-  <%= form_with url: "/encrypt", id: "cipher-form" , multipart: true, :remote => true do |f| %>
+  <%= form_with url: "/", id: "cipher-form" , multipart: true, remote: true do |f| %>
     <div class="field-wrapper">
       <%= f.label :input_type, "Input type:" %>
-      <%= f.select :input_type, [["Text","text"], ["File","file"]], selected: "text"  %>
+      <%= f.select :input_type, [["Text","text"], ["File","file"]], selected: "text" %>
     </div>
     <div class="field-wrapper" id="input_field">
       <%= f.label :input_text, "Input text:" %>
-      <%= f.text_area :input_text, rows: 5, cols: 60 %>
+      <%= f.text_area :input_text, rows: 5, cols: 60, required: true, value: @input_text %>
     </div>
     <div class="field-wrapper">
       <%= f.label :cipher_type, "Cipher type:" %>
@@ -16,16 +16,16 @@
     </div>
     <div class="field-wrapper">
       <%= f.label :key, "Key:" %>
-      <%= f.text_field :key %>
+      <%= f.text_field :key, value: @key, required: true %>
     </div>
     <div class="button-wrapper">
       <%= f.submit "Encrypt" %>
-      <%= f.submit "Decrypt", formaction: "/decrypt" %>
+      <%= f.submit "Decrypt"%>
     </div>
   <%end%>
 
   <div id="output">
     <label for="ciphertext-output">Output text:</label>
-    <textarea id="ciphertext-output" rows="5" cols="60"></textarea>
+    <textarea id="ciphertext-output" rows="5" cols="60" disabled><%= @result%></textarea>
   </div>
 </main>
