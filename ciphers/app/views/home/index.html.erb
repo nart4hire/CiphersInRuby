@@ -1,3 +1,45 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-<p>Hello</p>
+<main>
+  <h1>Ciphers In Ruby</h1>
+
+  <form id="cipher-form">
+    <div class="field-wrapper">
+      <label for="input-type">Input type:</label>
+      <select id="input-type">
+        <option value="text">Text</option>
+        <option value="file">File</option>
+      </select>
+    </div>
+    <div class="field-wrapper" id="input-field">
+      <label for="plaintext-input">Input text:</label>
+      <textarea id="plaintext-input" rows="5" cols="60"></textarea>
+    </div>
+    <div class="field-wrapper">
+      <label for="cipher-type">Cipher type:</label>
+      <select id="cipher-type">
+        <option value="vigenere">Vigenère</option>
+        <option value="auto-key-vigenere">Auto-Key Vigenère</option>
+        <option value="extended-vigenere">Extended Substitution</option>
+        <option value="playfair">Playfair</option>
+        <option value="affine">Affine</option>
+        <option value="hill">Hill</option>
+        <option value="super">
+          Super Encryption (Extended Vigenere Cipher and Transposition)
+        </option>
+        <option value="enigma">Enigma</option>
+      </select>
+    </div>
+    <div class="field-wrapper">
+      <label for="key">Key:</label>
+      <input type="text" id="key" />
+    </div>
+    <div class="button-wrapper">
+        <button type="button" id="encrypt">Encrypt</button>
+        <button type="button" id="decrypt">Decrypt</button>
+    </div>
+  </form>
+
+  <div id="output">
+    <label for="ciphertext-output">Output text:</label>
+    <textarea id="ciphertext-output" rows="5" cols="60"></textarea>
+  </div>
+</main>
