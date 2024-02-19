@@ -23,6 +23,15 @@ module HomeHelper
         when "auto-key-vigenere"
             return Ciphers::Vigenere.decrypt(input_text, key, true) if params[:commit] == "Decrypt"
             return Ciphers::Vigenere.encrypt(input_text, key, true)
+        when "playfair"
+            return Ciphers::Playfair.decrypt(input_text, key) if params[:commit] == "Decrypt"
+            return Ciphers::Playfair.encrypt(input_text, key)
+        when "affine" #TODO: Implement affine cipher
+            return ""
+        when "hill" #TODO: Implement hill cipher
+            return ""
+        when "enigma" #TODO: Implement enigma cipher
+            return ""
         end
     end
 end
