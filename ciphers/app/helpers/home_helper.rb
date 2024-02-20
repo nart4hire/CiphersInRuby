@@ -11,8 +11,7 @@ module HomeHelper
         if (params[:input_type] == "text" and !(params[:cipher_type] == 'super' or params[:cipher_type] == 'extended-vigenere'))
             input_text = sanitize_input(params[:input_text])
         elsif (params[:input_type] == "file")
-            input_text = process_file_input(params[:input_file], params[:cipher_type])
-            print input_text
+            input_text = process_file_input(params[:input_file], params[:cipher_type], params[:commit] == "Decrypt")
         end
 
         
