@@ -19,7 +19,7 @@ module Utils
                         byteArr << byte
                     }
                 end
-
+                
                 if !is_decrypt
                     # append file format to the last two lines of file
                     content_type = input_file.headers.split("\n")[1].split(":")[1].strip + "\n"
