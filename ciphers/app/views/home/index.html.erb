@@ -24,8 +24,15 @@
     </div>
   <%end%>
 
+
   <div id="output">
     <label for="ciphertext-output">Output text:</label>
-    <textarea id="ciphertext-output" rows="5" cols="60" disabled><%= @result%></textarea>
+    <textarea id="ciphertext-output" rows="5" cols="60" disabled></textarea>
+    <div>
+      <button id="plaintext">Plaintext</button>
+      <button id="base64">Base64</button>
+    </div>
+    <label for="ciphertext-output-bytes">Output bytes:</label>
+    <textarea id="ciphertext-output-bytes" rows="5" cols="60" disabled><%= @result_bytes%></textarea>
   </div>
 </main>

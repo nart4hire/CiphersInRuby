@@ -8,16 +8,24 @@ module Utils
 
         # @param input_file [File]
         # @param cipher_type [String]
-        # @return [String]
+        # @return [String] or [Byte]
         def process_file_input(input_file, cipher_type)
             if cipher_type == 'super' or cipher_type == 'extended-vigenere'
-                # Read each byte of the file
-                File.open(input_file.tempfile) do |file|
-                    file.each_byte {
-                        |byte| print byte
+                # append file format to the last line of file
+                file_format = input_file.original_filename.split('.').last
+                File.write(input_file.tempfile, "\n" + file_format, mode: 'a')
+                
+                # Create byte array
+                byteArr = []
+                File.open(input_file.tempfile, "rb") do |f|
+                    f.each_byte { |byte|
+                        puts byte
+                        byteArr << byte
                     }
                 end
-                return input_file.tempfile.read
+                
+                # Convert byte array to ASCII
+                return byteArr.pack('C*')
             end
             return sanitize_input(File.read(input_file.tempfile))
         end
