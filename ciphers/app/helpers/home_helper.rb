@@ -25,12 +25,15 @@ module HomeHelper
         when "playfair"
             return Ciphers::Playfair.decrypt(input_text, key) if params[:commit] == "Decrypt"
             return Ciphers::Playfair.encrypt(input_text, key)
-        when "affine" #TODO: Implement affine cipher
-            return ""
-        when "hill" #TODO: Implement hill cipher
-            return ""
-        when "enigma" #TODO: Implement enigma cipher
-            return ""
+        when "affine"
+            return Ciphers::Affine.decrypt(input_text, key) if params[:commit] == "Decrypt"
+            return Ciphers::Affine.encrypt(input_text, key)
+        when "hill"
+            return Ciphers::Hill.decrypt(input_text, key) if params[:commit] == "Decrypt"
+            return Ciphers::Hill.encrypt(input_text, key)
+        when "enigma"
+            return Ciphers::Enigma.decrypt(input_text, key) if params[:commit] == "Decrypt"
+            return Ciphers::Enigma.encrypt(input_text, key)
         when "extended-vigenere"
             return Ciphers::ExtendedVigenere.decrypt(input_text, key) if params[:commit] == "Decrypt"
             return Ciphers::ExtendedVigenere.encrypt(input_text, key)
