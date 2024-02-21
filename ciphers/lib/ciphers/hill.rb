@@ -2,7 +2,7 @@ require 'matrix'
 
 module Ciphers
     class Hill
-        def encrypt(plaintext, key, block_size = 3, seed = 777)
+        def encrypt(plaintext, key, block_size: 3, seed: 777)
             # convert plaintext to numbers
             num_plaintext = plaintext.chars.map { |c| c.ord - 'a'.ord }
             num_key = key.chars.map { |c| c.ord - 'a'.ord }
@@ -33,7 +33,7 @@ module Ciphers
             return ciphertext
         end
 
-        def decrypt(ciphertext, key, block_size = 3, seed = 777)
+        def decrypt(ciphertext, key, block_size: 3, seed: 777)
             # convert ciphertext to numbers
             num_ciphertext = ciphertext.chars.map { |c| c.ord - 'a'.ord }
             num_key = key.chars.map { |c| c.ord - 'a'.ord }
@@ -110,6 +110,7 @@ module Ciphers
             
             # calculate the inverse matrix
             inverse_matrix = adjoint_matrix.map { |c| (c * modinvdet) % 26 }
+
             return inverse_matrix.to_a
         end
     end

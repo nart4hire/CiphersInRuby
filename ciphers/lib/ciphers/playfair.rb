@@ -52,7 +52,7 @@ module Ciphers
             input_text_clean = replaced_input_text.chars.to_a
 
             # Pair the characters together and decrypt them
-            decrypted_text = process_string(matrix, input_text_clean, false)
+            decrypted_text = process_string(matrix, input_text_clean, encrypt: false)
 
             return decrypted_text
         end
@@ -98,7 +98,7 @@ module Ciphers
         # @param [String] text_clean; Input text
         # @param [Boolean] encrypt; Indicator for encryption (default: true)
         # @return [String] Encrypted or decrypted text
-        def process_string(key_matrix, text_clean, encrypt = true)
+        def process_string(key_matrix, text_clean, encrypt: true)
             # Pair the characters together and process them
             processed_text = ""
             text_clean.each_slice(2) do |pair|
