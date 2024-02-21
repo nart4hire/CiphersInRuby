@@ -39,7 +39,7 @@ module Ciphers
                 while current_index < input_text.length && transposed_text.length < input_text.length
                     transposed_text += input_text[current_index]
                     current_index += row_length
-                    if extra_characters <= 0
+                    if extra_characters <= 0 && !(input_text.length % key.length == 0)
                         current_index -= 1
                     end
                     extra_characters -= 1

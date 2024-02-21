@@ -67,7 +67,6 @@
     let fileName = "output";
     let urlFile = "";
     urlFile = URL.createObjectURL(new Blob([bytes], {type: type}));
-    console.log(type);
     fileName += ".<%= @file_type%>";
     saveFile(fileName,urlFile);
   }
