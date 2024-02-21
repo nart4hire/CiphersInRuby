@@ -1,44 +1,58 @@
 <main>
-  <h1>Ciphers In Ruby</h1>
+  <h1 class="title">Ciphers In Ruby</h1>
 
-  <%= form_with url: "/", id: "cipher-form" , multipart: true, remote: true do |f| %>
-    <div class="field-wrapper">
-      <%= f.label :input_type, "Input type:" %>
-      <%= f.select :input_type, [["Text","text"], ["File","file"]], selected: 'text' %>
-    </div>
-    <div class="field-wrapper" id="input_field">
-      <%= f.label :input_text, "Input text:" %>
-      <%= f.text_area :input_text, rows: 5, cols: 60, required: true, value: @input_text %>
-    </div>
-    <div class="field-wrapper">
-      <%= f.label :cipher_type, "Cipher type:" %>
-      <%= f.select :cipher_type, [["Vigenere", "vigenere"], ["Auto-Key Vigenere","auto-key-vigenere"], ["Extended Vigenere","extended-vigenere"], ["Playfair","playfair"], ["Affine","affine"], ["Hill", "hill"], ["Super Encryption (Extended Vigenere Cipher and Transposition)", "super"], ["Enigma", "enigma"]], selected: @cipher_type == nil ? "vigenere" : @cipher_type %>
-    </div>
-    <div class="field-wrapper">
-      <%= f.label :key, "Key:" %>
-      <%= f.text_field :key, value: @key, required: true %>
-    </div>
-    <div class="button-wrapper">
-      <%= f.submit "Encrypt" %>
-      <%= f.submit "Decrypt"%>
-    </div>
-  <%end%>
+  <div class="content-container">
+    <%= form_with url: "/", id: "cipher-form" , multipart: true, remote: true do |f| %>
+      <div class="field-wrapper">
+        <%= f.label :input_type, "Input type:" %>
+        <div class="select-dropdown" >
+          <%= f.select :input_type, [["Text","text"], ["File","file"]], selected: 'text' %>
+        </div>
+      </div>
+      <div class="field-wrapper" id="input_field">
+        <%= f.label :input_text, "Input text:" %>
+        <%= f.text_area :input_text, rows: 5, cols: 60, required: true, value: @input_text %>
+      </div>
+      <div class="field-wrapper">
+        <%= f.label :cipher_type, "Cipher type:" %>
+        <div class="select-dropdown" >
+        <%= f.select :cipher_type, [["Vigenere", "vigenere"], ["Auto-Key Vigenere","auto-key-vigenere"], ["Extended Vigenere","extended-vigenere"], ["Playfair","playfair"], ["Affine","affine"], ["Hill", "hill"], ["Super Encryption (Extended Vigenere Cipher and Transposition)", "super"], ["Enigma", "enigma"]], selected: @cipher_type == nil ? "vigenere" : @cipher_type %>
+        </div>
+      </div>
+      <div class="field-wrapper">
+        <%= f.label :key, "Key:" %>
+        <%= f.text_field :key, value: @key, required: true %>
+      </div>
+      <div class="button-wrapper">
+        <%= f.submit "Encrypt", class: "button-2" %>
+        <%= f.submit "Decrypt", class: "button-2"%>
+      </div>
+    <%end%>
 
 
-  <div id="output">
-    <label for="ciphertext-output">Output text:</label>
-    <textarea id="ciphertext-output" rows="5" cols="60" disabled></textarea>
-    <div>
-      <button id="plaintext">Plaintext</button>
-      <button id="base64">Base64</button>
+    <div id="output">
+      <div class="output-wrapper">
+        <label for="ciphertext-output">Output text:</label>
+        <textarea id="ciphertext-output" rows="5" cols="60" disabled></textarea>
+        <div class="button-wrapper">
+          <button id="plaintext" class="button-2">Plaintext</button>
+          <button id="base64" class="button-2">Base64</button>
+        </div>
+      </div>
+      <div class="output-wrapper">
+        <label for="ciphertext-output-bytes">Output bytes:</label>
+        <textarea id="ciphertext-output-bytes" rows="5" cols="60" disabled><%= @result_bytes%></textarea>
+      </div>
     </div>
-    <label for="ciphertext-output-bytes">Output bytes:</label>
-    <textarea id="ciphertext-output-bytes" rows="5" cols="60" disabled><%= @result_bytes%></textarea>
+    <div id="download">
+      <button id="download-file" class="button-2" onclick="download()">Download</button>
+      <button id="download-binary" class="button-2" onclick="downloadBinary()">Download as binary</button>
+    </div>
   </div>
-  <div id="download">
-    <button id="download-file" onclick="download()">Download</button>
-    <button id="download-binary" onclick="downloadBinary()">Download as binary</button>
-  </div>
+
+  <footer>
+    Created by Aditya and Nathanael
+  </footer>
 </main>
 
 <script>
