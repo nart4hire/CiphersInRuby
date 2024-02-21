@@ -34,7 +34,7 @@ const convertedBytes = decoder.decode(
   )
 );
 
-textAreaOutput.value = convertedBytes;
+textAreaOutput.value = textAreaOutputBytesValue === "" ? "" : convertedBytes;
 
 // Add event listener to plaintext button
 const plaintextButton = document.getElementById("plaintext");

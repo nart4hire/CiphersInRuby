@@ -25,6 +25,9 @@ module HomeHelper
         when "extended-vigenere"
             return Ciphers::ExtendedVigenere.decrypt(input_text, key) if params[:commit] == "Decrypt"
             return Ciphers::ExtendedVigenere.encrypt(input_text, key)
+        when "super"
+            return Ciphers::SuperEncryption.decrypt(input_text, key) if params[:commit] == "Decrypt"
+            return Ciphers::SuperEncryption.encrypt(input_text, key)
         end
     end
 end
