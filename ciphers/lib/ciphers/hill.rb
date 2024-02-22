@@ -1,7 +1,8 @@
 require 'matrix'
 
 module Ciphers
-    class Hill
+    module Hill
+        module_function
         def encrypt(plaintext, key, block_size: 3, seed: 777)
             # convert plaintext to numbers
             num_plaintext = plaintext.chars.map { |c| c.ord - 'a'.ord }
@@ -10,7 +11,9 @@ module Ciphers
             # Pad the keys with a random seeded number between 0 and 25
             if (num_key.length < block_size * block_size)
                 srand(seed)
-                num_key += Array.new(block_size * block_size - num_key.length, rand(26))
+                for i in 1..(block_size * block_size - num_key.length) do
+                    num_key.append(rand(26))
+                end
             end
 
             # create a matrix based on block_size
@@ -41,9 +44,11 @@ module Ciphers
             # Pad the keys with a random seeded number between 0 and 25
             if (num_key.length < block_size * block_size)
                 srand(seed)
-                num_key += Array.new(block_size * block_size - num_key.length, rand(26))
+                for i in 1..(block_size * block_size - num_key.length) do
+                    num_key.append(rand(26))
+                end
             end
-
+            print num_key
             # create a matrix based on block_size
             matrix = num_key.each_slice(block_size).to_a
 

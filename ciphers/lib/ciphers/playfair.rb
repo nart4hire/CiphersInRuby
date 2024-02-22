@@ -16,7 +16,7 @@ module Ciphers
             # Find the location of duplicate characters
             input_text_clean = replaced_input_text.chars.to_a
             input_text_clean.each_with_index do |char, index|
-                # Only replace the character if it is the same as the next character and the index is even (i.e. they will be paired together)
+                # Only insert the character if it is the same as the next character and the index is even (i.e. they will be paired together)
                 if char == input_text_clean[index + 1] && index % 2 == 0
                     # If the character is x, insert a z after it
                     if char == 'x'
@@ -61,7 +61,7 @@ module Ciphers
         # @return [Array<Array<String>>] key_matrix
         def create_key_matrix(key)
             # Turn the key into a set of unique characters
-            key_set = replaced_key.chars.to_a.uniq
+            key_set = key.chars.to_a.uniq
 
             # Create a 5x5 matrix
             key_matrix = Array.new(5) { Array.new(5) }

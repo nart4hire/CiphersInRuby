@@ -45,14 +45,14 @@ services:
     env_file:
       - .env
 
-  nginx:
-    build:
-      context: .
-      dockerfile: ./Dockerfile.nginx
-    links:
-      - ciphers
-    ports:
-      - '8020:8020'
+  # nginx:
+  #   build:
+  #     context: .
+  #     dockerfile: ./Dockerfile.nginx
+  #   links:
+  #     - ciphers
+  #   ports:
+  #     - '8020:8020'
 
 volumes:
   ciphers-postgres:
