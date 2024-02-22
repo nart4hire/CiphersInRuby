@@ -18,5 +18,10 @@ RUN gem install rails bundler
 RUN bundle install
 RUN yarn install
 
+# Run database migrations
+RUN chmod +x ./entrypoint.sh
+
+ENTRYPOINT ["./entrypoint.sh"]
+
 # Start server
 CMD bundle exec unicorn -c config/unicorn.rb

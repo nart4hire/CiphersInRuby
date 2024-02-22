@@ -7,7 +7,6 @@ An Implementation of a few popular **Breakable Ciphers** in **Ruby**.
 This implementation uses **Docker** and the **Compose** utility to easily run the services below:
 - Ruby on Rails
 - Sidekiq
-- Nginx
 
 Requirements:
 - Docker: Latest

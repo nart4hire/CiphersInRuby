@@ -30,6 +30,9 @@ services:
       - '8010:8010'
     env_file:
       - .env
+    depends_on:
+      - postgres
+      - redis
 
   sidekiq:
     depends_on:
@@ -44,15 +47,6 @@ services:
       - redis
     env_file:
       - .env
-
-  # nginx:
-  #   build:
-  #     context: .
-  #     dockerfile: ./Dockerfile.nginx
-  #   links:
-  #     - ciphers
-  #   ports:
-  #     - '8020:8020'
 
 volumes:
   ciphers-postgres:
